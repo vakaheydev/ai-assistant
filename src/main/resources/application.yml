@@ -10,6 +10,12 @@ spring:
     encoding: UTF-8
     prefix: file:src/main/resources/templates/
 
+recognizer:
+  model:
+    path:
+      "C:\\Users\\Vaka\\Documents\\java_learn\\ai-assistant\\src\\main\\resources\\model\\vosk-model-small-ru-0.22"
+
+
 neural:
   model: deepseek/deepseek-chat-v3-0324:free
   api:
