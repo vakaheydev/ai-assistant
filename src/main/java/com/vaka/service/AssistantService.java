@@ -13,11 +13,14 @@ import java.util.concurrent.CompletableFuture;
 public class AssistantService {
     private final RecognitionService recognitionService;
     private final HandlerService handlerService;
+    private final FileTextService fileTextService;
     private final BlockingQueue<String> queue = new ArrayBlockingQueue<>(10);
 
-    public AssistantService(RecognitionService recognitionService, HandlerService handlerService) {
+    public AssistantService(RecognitionService recognitionService, HandlerService handlerService,
+                            FileTextService fileTextService) {
         this.recognitionService = recognitionService;
         this.handlerService = handlerService;
+        this.fileTextService = fileTextService;
     }
 
     @Async("asynchronousListenerExecutor")
@@ -31,7 +34,10 @@ public class AssistantService {
             CompletableFuture<String> future = handlerService.handle(phrase);
 
             future
-                    .thenAccept(res -> log.info("Got result: {}", res));
+                    .thenAccept(res -> {
+                        log.info("Got result: {}", res);
+                        fileTextService.writeText(res);
+                    });
         }
     }
 
