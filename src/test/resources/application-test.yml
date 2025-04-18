@@ -1,0 +1,16 @@
+server:
+  port: 8989
+
+spring:
+  config:
+    import: application-private.yml
+  thymeleaf:
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: file:src/main/resources/templates/
+
+neural:
+  model: deepseek/deepseek-chat-v3-0324:free
+  api:
+    key:
