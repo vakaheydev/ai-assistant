@@ -1,4 +1,4 @@
-package org.lakas_vaka.auto_answer.configuration;
+package com.vaka.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ public class AsyncConfig {
     public Executor createAsynchronousListenerExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setMaxPoolSize(100);
-        executor.setCorePoolSize(5);
+        executor.setCorePoolSize(8);
         executor.setQueueCapacity(1000);
         executor.initialize();
         return executor;
