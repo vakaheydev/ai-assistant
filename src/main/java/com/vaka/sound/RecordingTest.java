@@ -1,4 +1,4 @@
-package com.vaka;
+package com.vaka.sound;
 
 import javax.sound.sampled.*;
 import javax.swing.*;
