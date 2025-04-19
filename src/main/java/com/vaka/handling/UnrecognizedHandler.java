@@ -1,5 +1,6 @@
 package com.vaka.handling;
 
+import com.vaka.neural.service.NeuralService;
 import com.vaka.service.SoundPlayerService;
 
 public class UnrecognizedHandler implements Handler {
@@ -12,6 +13,6 @@ public class UnrecognizedHandler implements Handler {
     @Override
     public String handle(String phrase) {
         soundPlayerService.dontUnderstand();
-        return "К сожалению, я не понимаю, что Вы хотите :(";
+        return "К сожалению, я не понимаю";
     }
 }

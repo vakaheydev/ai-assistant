@@ -14,7 +14,7 @@ public class AsyncConfig {
     public Executor createAsynchronousListenerExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setMaxPoolSize(100);
-        executor.setCorePoolSize(8);
+        executor.setCorePoolSize(15);
         executor.setQueueCapacity(1000);
         executor.initialize();
         return executor;

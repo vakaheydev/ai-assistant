@@ -1,12 +1,17 @@
 package com.vaka.handling;
 
+import com.vaka.neural.service.NeuralService;
 import com.vaka.service.SoundPlayerService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class NeuralHandler implements Handler {
     private final SoundPlayerService soundPlayerService;
+    private final NeuralService neuralService;
 
-    public NeuralHandler(SoundPlayerService soundPlayerService) {
+    public NeuralHandler(SoundPlayerService soundPlayerService, NeuralService neuralService) {
         this.soundPlayerService = soundPlayerService;
+        this.neuralService = neuralService;
     }
 
     /**
@@ -25,7 +30,9 @@ public class NeuralHandler implements Handler {
      */
     @Override
     public String handle(String phrase) {
-        soundPlayerService.ok();
-        return "Спрошу у нейросети про " + phrase;
+        soundPlayerService.playSound("Спрошу у нейросети");
+        String answer = neuralService.request(phrase);
+        soundPlayerService.playSound(answer);
+        return answer;
     }
 }
