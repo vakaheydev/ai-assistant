@@ -1,13 +1,13 @@
 package com.vaka.handling.open;
 
-import com.vaka.handling.Handler;
+import com.vaka.handling.PhraseHandler;
 import com.vaka.service.SoundPlayerService;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OpenHandler implements Handler {
+public class OpenHandler implements PhraseHandler {
     private final SoundPlayerService soundPlayerService;
     private final Map<String, OpenCommandTarget> openItems = new HashMap<>();
 

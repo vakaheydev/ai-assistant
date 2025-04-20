@@ -1,8 +1,7 @@
 package com.vaka.service;
 
-import com.vaka.handling.Handler;
+import com.vaka.handling.PhraseHandler;
 import com.vaka.handling.HandlerResolver;
-import com.vaka.handling.MirrorHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -22,9 +21,9 @@ public class HandlerService {
     public CompletableFuture<String> handle(String phrase) {
         log.info("Handling phrase: {}", phrase);
 
-        Handler handler = handlerResolver.resolve(phrase);
+        PhraseHandler phraseHandler = handlerResolver.resolve(phrase);
         phrase = phrase.substring(phrase.indexOf(" ") + 1);
-        String result = handler.handle(phrase);
+        String result = phraseHandler.handle(phrase);
 
         return CompletableFuture.completedFuture(result);
     }

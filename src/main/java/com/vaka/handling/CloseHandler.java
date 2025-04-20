@@ -2,7 +2,7 @@ package com.vaka.handling;
 
 import com.vaka.service.SoundPlayerService;
 
-public class CloseHandler implements Handler {
+public class CloseHandler implements PhraseHandler {
     private final SoundPlayerService soundPlayerService;
 
     public CloseHandler(SoundPlayerService soundPlayerService) {

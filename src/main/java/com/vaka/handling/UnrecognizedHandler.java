@@ -1,9 +1,8 @@
 package com.vaka.handling;
 
-import com.vaka.neural.service.NeuralService;
 import com.vaka.service.SoundPlayerService;
 
-public class UnrecognizedHandler implements Handler {
+public class UnrecognizedHandler implements PhraseHandler {
     private final SoundPlayerService soundPlayerService;
 
     public UnrecognizedHandler(SoundPlayerService soundPlayerService) {

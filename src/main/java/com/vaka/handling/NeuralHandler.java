@@ -5,7 +5,7 @@ import com.vaka.service.SoundPlayerService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class NeuralHandler implements Handler {
+public class NeuralHandler implements PhraseHandler {
     private final SoundPlayerService soundPlayerService;
     private final NeuralService neuralService;
 

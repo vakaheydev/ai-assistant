@@ -2,7 +2,7 @@ package com.vaka.handling;
 
 import com.vaka.service.SoundPlayerService;
 
-public class StopHandler implements Handler {
+public class StopHandler implements PhraseHandler {
     private final SoundPlayerService soundPlayerService;
 
     public StopHandler(SoundPlayerService soundPlayerService) {

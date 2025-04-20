@@ -1,5 +1,5 @@
 package com.vaka.handling;
 
-public interface Handler {
+public interface PhraseHandler {
     String handle(String phrase);
 }

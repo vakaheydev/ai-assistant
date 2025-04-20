@@ -3,34 +3,34 @@ package com.vaka.neural.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vaka.neural.AssistantNeuralRequestBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClient;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Slf4j
 public class GeneralNeuralService implements NeuralService {
     private final String URL = "https://openrouter.ai/api/v1/chat/completions";
 
     private NeuralModel neuralModel;
-
     private final RestClient restClient;
-
     private final String authToken;
+    private final AssistantNeuralRequestBuilder requestBuilder;
 
-    public GeneralNeuralService(NeuralModel neuralModel, RestClient restClient, String authToken) {
+    public GeneralNeuralService(NeuralModel neuralModel, RestClient restClient, String authToken,
+                                AssistantNeuralRequestBuilder requestBuilder) {
         this.neuralModel = neuralModel;
         this.restClient = restClient;
         this.authToken = authToken;
+        this.requestBuilder = requestBuilder;
     }
 
     @Override
     public String request(String requestText) {
-        String responseText = sendRequest(requestText);
+        String request = requestBuilder.buildAssistantRequest(requestText);
+        String responseText = sendRequest(request);
         log.debug("Response text: {}", responseText.trim());
         return getAnswer(responseText);
     }

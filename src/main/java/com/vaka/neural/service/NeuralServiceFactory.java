@@ -1,5 +1,6 @@
 package com.vaka.neural.service;
 
+import com.vaka.neural.AssistantNeuralRequestBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
@@ -9,9 +10,12 @@ import java.util.List;
 @Component
 public class NeuralServiceFactory {
     private static GeneralNeuralService generalNeuralService;
+    private final AssistantNeuralRequestBuilder requestBuilder;
 
-    public NeuralServiceFactory(RestClient restClient, @Value("${neural.api.key}") String authToken) {
-        generalNeuralService = new GeneralNeuralService(null, restClient, authToken);
+    public NeuralServiceFactory(RestClient restClient, @Value("${neural.api.key}") String authToken,
+                                AssistantNeuralRequestBuilder requestBuilder) {
+        this.requestBuilder = requestBuilder;
+        generalNeuralService = new GeneralNeuralService(null, restClient, authToken, requestBuilder);
     }
 
     public List<NeuralModel> getAvailableNeuralModels() {
