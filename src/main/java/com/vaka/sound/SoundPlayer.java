@@ -1,10 +1,13 @@
-package com.vaka;
+package com.vaka.sound;
+
+import org.springframework.stereotype.Component;
 
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 
-public class SoundPlayerTest {
+@Component
+public class SoundPlayer {
     public static void main(String[] args) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(
                 new File("C:\\Users\\Vaka\\Documents\\java_learn\\ai-assistant\\apple.wav"));
